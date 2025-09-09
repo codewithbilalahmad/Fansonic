@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Fansonic"
 include(":app")
+include(":app:baselineprofile")
