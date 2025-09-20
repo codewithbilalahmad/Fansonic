@@ -51,11 +51,13 @@ class StopWatchService : Service() {
                     updateTimer()
                 }
             }
-            StopWatchState.STOPPED.name ->{
+
+            StopWatchState.STOPPED.name -> {
                 stopStopWatch()
                 setResumeButton()
             }
-            StopWatchState.CANCELLED.name ->{
+
+            StopWatchState.CANCELLED.name -> {
                 stopStopWatch()
                 cancelStopWatch()
                 stopForegroundService()
@@ -63,7 +65,7 @@ class StopWatchService : Service() {
         }
         intent?.action?.let { action ->
             when (action) {
-                ACTION_SERVICE_START ->{
+                ACTION_SERVICE_START -> {
                     setStopButton()
                     startForegroundService()
                     startStopWatch { hours, minutes, seconds ->
@@ -71,11 +73,13 @@ class StopWatchService : Service() {
                         updateTimer()
                     }
                 }
-                ACTION_SERVICE_STOP ->{
+
+                ACTION_SERVICE_STOP -> {
                     stopStopWatch()
                     setResumeButton()
                 }
-                    ACTION_SERVICE_CANCEL ->{
+
+                ACTION_SERVICE_CANCEL -> {
                     stopStopWatch()
                     cancelStopWatch()
                     stopForegroundService()
@@ -86,43 +90,49 @@ class StopWatchService : Service() {
     }
 
     override fun onBind(p0: Intent?): IBinder = binder
-    private fun startStopWatch(onTick : (hour : String, minute : String, seconds : String) -> Unit){
+    private fun startStopWatch(onTick: (hour: String, minute: String, seconds: String) -> Unit) {
         currentState.value = StopWatchState.STARTED
-        timer = fixedRateTimer(initialDelay = 1000L, period = 1000L){
+        timer = fixedRateTimer(initialDelay = 1000L, period = 1000L) {
             duration = duration.plus(1.seconds)
             updateTimer()
             onTick(hours.value, minutes.value, seconds.value)
         }
     }
-    private fun stopStopWatch(){
-        if(this::timer.isInitialized){
+
+    private fun stopStopWatch() {
+        if (this::timer.isInitialized) {
             timer.cancel()
         }
         currentState.value = StopWatchState.STOPPED
     }
-    private fun cancelStopWatch(){
+
+    private fun cancelStopWatch() {
         duration = Duration.ZERO
         currentState.value = StopWatchState.IDLE
         updateTimer()
     }
-    private fun updateTimer(){
+
+    private fun updateTimer() {
         duration.toComponents { hours, minutes, seconds, _ ->
             this@StopWatchService.hours.value = hours.toInt().pad()
             this@StopWatchService.minutes.value = minutes.pad()
             this@StopWatchService.seconds.value = seconds.pad()
         }
     }
-    private fun startForegroundService(){
+
+    private fun startForegroundService() {
         createNotificationChannel()
         startForeground(NOTIFICATION_ID, notificationBuilder.build())
     }
-    private fun stopForegroundService(){
+
+    private fun stopForegroundService() {
         notificationManager.cancel(NOTIFICATION_ID)
         stopForeground(STOP_FOREGROUND_REMOVE)
         stopSelf()
     }
-    private fun createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 NOTIFICATION_CHANNEL_ID,
                 NOTIFICATION_CHANNEL_NAME,
@@ -131,7 +141,8 @@ class StopWatchService : Service() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-    private fun updateNotification(hours : String, minutes : String, seconds : String){
+
+    private fun updateNotification(hours: String, minutes: String, seconds: String) {
         notificationManager.notify(
             NOTIFICATION_ID,
             notificationBuilder.setContentText(
@@ -143,6 +154,7 @@ class StopWatchService : Service() {
             ).build()
         )
     }
+
     @SuppressLint("RestrictedApi")
     private fun setStopButton() {
         notificationBuilder.mActions.removeAt(0)
@@ -161,8 +173,9 @@ class StopWatchService : Service() {
         )
         notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
     }
-    fun updateStateFromNotification(state : String){
-        when(state){
+
+    fun updateStateFromNotification(state: String) {
+        when (state) {
             StopWatchState.STARTED.name -> {
                 setStopButton()
                 startForegroundService()
@@ -171,16 +184,20 @@ class StopWatchService : Service() {
                     updateTimer()
                 }
             }
+
             StopWatchState.STOPPED.name -> {
                 stopStopWatch()
                 setResumeButton()
             }
+
             StopWatchState.CANCELLED.name -> {
+                stopStopWatch()
                 cancelStopWatch()
                 stopForegroundService()
             }
         }
     }
+
     inner class StopWatchBinder() : Binder() {
         fun getService(): StopWatchService = this@StopWatchService
     }

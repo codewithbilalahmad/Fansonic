@@ -115,8 +115,7 @@ fun StopWatchScreen(stopWatchService: StopWatchService) {
                     contentColor = MaterialTheme.colorScheme.onPrimary
                 )
             ) {
-                val text =
-                    if (currentState == StopWatchState.STARTED) "Stop" else if (currentState == StopWatchState.STOPPED) "Resume" else "Start"
+                val text = if (currentState == StopWatchState.STARTED) "Stop" else if (currentState == StopWatchState.STOPPED) "Resume" else "Start"
                 Text(text = text)
             }
             ElevatedButton(
