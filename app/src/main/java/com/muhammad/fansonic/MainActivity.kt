@@ -1,19 +1,59 @@
 package com.muhammad.fansonic
 
+import android.Manifest
+import android.content.ComponentName
+import android.content.Intent
+import android.content.ServiceConnection
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.IBinder
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
-import com.muhammad.fansonic.animations.AnimationsScreen
-import com.muhammad.fansonic.slideToLock.SlideToUnlockScreen
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import com.muhammad.fansonic.foreground_service.service.StopWatchService
+import com.muhammad.fansonic.foreground_service.service.StopWatchState
+import com.muhammad.fansonic.foreground_service.ui.StopWatchScreen
 import com.muhammad.fansonic.ui.theme.FansonicTheme
 
 class MainActivity : ComponentActivity() {
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private var isBound by mutableStateOf(false)
+    private lateinit var stopWatchService: StopWatchService
+    private var pendingState : String?=null
+    private var pendingAction : String?=null
+    private val connection = object : ServiceConnection {
+        override fun onServiceConnected(
+            className: ComponentName?,
+            service: IBinder?,
+        ) {
+            val binder = service as StopWatchService.StopWatchBinder
+            stopWatchService = binder.getService()
+            isBound = true
+            if(pendingAction != null && pendingState != null){
+                handleStopWatchNotificationIntent(Intent().apply {
+                    putExtra("STOPWATCH_ACTION", pendingState)
+                    action = pendingAction
+                })
+                pendingState = null
+                pendingAction = null
+            }
+        }
+
+        override fun onServiceDisconnected(p0: ComponentName?) {
+            isBound = false
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Intent(this, StopWatchService::class.java).also { intent ->
+            bindService(intent, connection, BIND_AUTO_CREATE)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
@@ -25,10 +65,42 @@ class MainActivity : ComponentActivity() {
                 Color.TRANSPARENT
             )
         )
+        handleStopWatchNotificationIntent(intent = intent)
         setContent {
-            FansonicTheme(darkTheme = true){
-                AnimationsScreen()
+            FansonicTheme{
+                if(isBound){
+                    StopWatchScreen(stopWatchService)
+                }
             }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),0)
+            }
+        }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleStopWatchNotificationIntent(intent)
+    }
+    override fun onStop() {
+        super.onStop()
+        unbindService(connection)
+        isBound = false
+    }
+    private fun handleStopWatchNotificationIntent(intent: Intent){
+        val state = intent.getStringExtra("STOPWATCH_STATE")
+        val action = intent.action
+        if(state != null){
+            if(this::stopWatchService.isInitialized && isBound){
+                when(action){
+                    "ACTION_SERVICE_CANCEL" -> stopWatchService.updateStateFromNotification(StopWatchState.CANCELLED.name)
+                    "ACTION_SERVICE_START" -> stopWatchService.updateStateFromNotification(StopWatchState.STARTED.name)
+                    "ACTION_SERVICE_STOP" -> stopWatchService.updateStateFromNotification(StopWatchState.STOPPED.name)
+                }
+            }
+        } else{
+            pendingState = state
+            pendingAction = action
         }
     }
 }

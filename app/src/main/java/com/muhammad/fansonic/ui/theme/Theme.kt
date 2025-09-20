@@ -70,8 +70,8 @@ fun FansonicTheme(
     val view = LocalView.current
     val window = (context as Activity).window
     SideEffect {
-        WindowCompat.getInsetsController(window,view).isAppearanceLightStatusBars = false
-        WindowCompat.getInsetsController(window,view).isAppearanceLightNavigationBars = false
+        WindowCompat.getInsetsController(window,view).isAppearanceLightStatusBars = true
+        WindowCompat.getInsetsController(window,view).isAppearanceLightNavigationBars = true
     }
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {

@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -29,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.muhammad.fansonic.R
 import kotlinx.coroutines.delay
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun WaveEffect(
     modifier: Modifier = Modifier,
@@ -66,7 +70,7 @@ fun WaveEffect(
                         scaleY = 1f + progress * 3f
                         alpha = 1f - progress
                     }
-                    .background(waveColor, CircleShape)
+                    .background(waveColor, MaterialShapes.Cookie12Sided.toShape())
 
             )
         }
