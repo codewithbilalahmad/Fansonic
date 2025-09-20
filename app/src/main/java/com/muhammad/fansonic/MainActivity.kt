@@ -18,6 +18,10 @@ import androidx.compose.runtime.setValue
 import com.muhammad.fansonic.foreground_service.service.StopWatchService
 import com.muhammad.fansonic.foreground_service.service.StopWatchState
 import com.muhammad.fansonic.foreground_service.ui.StopWatchScreen
+import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_CANCEL
+import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_START
+import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_STOP
+import com.muhammad.fansonic.foreground_service.util.Constants.STOPWATCH_STATE
 import com.muhammad.fansonic.ui.theme.FansonicTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,22 +30,22 @@ class MainActivity : ComponentActivity() {
     private var pendingState : String?=null
     private var pendingAction : String?=null
     private val connection = object : ServiceConnection {
-        override fun onServiceConnected(
-            className: ComponentName?,
-            service: IBinder?,
-        ) {
+        override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
             val binder = service as StopWatchService.StopWatchBinder
             stopWatchService = binder.getService()
             isBound = true
             if(pendingAction != null && pendingState != null){
-                handleStopWatchNotificationIntent(Intent().apply {
-                    putExtra("STOPWATCH_ACTION", pendingState)
-                    action = pendingAction
-                })
+                handleStopWatchNotificationIntent(
+                    Intent().apply {
+                        putExtra(STOPWATCH_STATE, pendingState)
+                        action = pendingAction
+                    }
+                )
                 pendingState = null
                 pendingAction = null
             }
         }
+
 
         override fun onServiceDisconnected(p0: ComponentName?) {
             isBound = false
@@ -88,19 +92,19 @@ class MainActivity : ComponentActivity() {
         isBound = false
     }
     private fun handleStopWatchNotificationIntent(intent: Intent){
-        val state = intent.getStringExtra("STOPWATCH_STATE")
+        val state = intent.getStringExtra(STOPWATCH_STATE)
         val action = intent.action
-        if(state != null){
+        if(state != null && action != null){
             if(this::stopWatchService.isInitialized && isBound){
                 when(action){
-                    "ACTION_SERVICE_CANCEL" -> stopWatchService.updateStateFromNotification(StopWatchState.CANCELLED.name)
-                    "ACTION_SERVICE_START" -> stopWatchService.updateStateFromNotification(StopWatchState.STARTED.name)
-                    "ACTION_SERVICE_STOP" -> stopWatchService.updateStateFromNotification(StopWatchState.STOPPED.name)
+                    ACTION_SERVICE_CANCEL -> stopWatchService.updateStateFromNotification(StopWatchState.CANCELLED.name)
+                    ACTION_SERVICE_START -> stopWatchService.updateStateFromNotification(StopWatchState.STARTED.name)
+                    ACTION_SERVICE_STOP -> stopWatchService.updateStateFromNotification(StopWatchState.STOPPED.name)
                 }
+            } else {
+                pendingState = state
+                pendingAction = action
             }
-        } else{
-            pendingState = state
-            pendingAction = action
         }
     }
 }
