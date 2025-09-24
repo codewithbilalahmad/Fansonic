@@ -22,42 +22,42 @@ import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_CA
 import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_START
 import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_STOP
 import com.muhammad.fansonic.foreground_service.util.Constants.STOPWATCH_STATE
+import com.muhammad.fansonic.snake_game.ui.SnakeGameScreen
 import com.muhammad.fansonic.ui.theme.FansonicTheme
 
 class MainActivity : ComponentActivity() {
-    private var isBound by mutableStateOf(false)
-    private lateinit var stopWatchService: StopWatchService
-    private var pendingState : String?=null
-    private var pendingAction : String?=null
-    private val connection = object : ServiceConnection {
-        override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
-            val binder = service as StopWatchService.StopWatchBinder
-            stopWatchService = binder.getService()
-            isBound = true
-            if(pendingAction != null && pendingState != null){
-                handleStopWatchNotificationIntent(
-                    Intent().apply {
-                        putExtra(STOPWATCH_STATE, pendingState)
-                        action = pendingAction
-                    }
-                )
-                pendingState = null
-                pendingAction = null
-            }
-        }
+//    private var isBound by mutableStateOf(false)
+//    private lateinit var stopWatchService: StopWatchService
+//    private var pendingState: String? = null
+//    private var pendingAction: String? = null
+//    private val connection = object : ServiceConnection {
+//        override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
+//            val binder = service as StopWatchService.StopWatchBinder
+//            stopWatchService = binder.getService()
+//            isBound = true
+//            if (pendingState != null && pendingAction != null) {
+//                handleStopWatchNotificationIntent(Intent().apply {
+//                    putExtra(STOPWATCH_STATE, pendingState)
+//                    action = pendingAction
+//                })
+//                pendingState = null
+//                pendingAction = null
+//            }
+//        }
+//
+//
+//        override fun onServiceDisconnected(p0: ComponentName?) {
+//            isBound = false
+//        }
+//    }
 
+//    override fun onStart() {
+//        super.onStart()
+//        Intent(this, StopWatchService::class.java).also { intent ->
+//            bindService(intent, connection, BIND_AUTO_CREATE)
+//        }
+//    }
 
-        override fun onServiceDisconnected(p0: ComponentName?) {
-            isBound = false
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Intent(this, StopWatchService::class.java).also { intent ->
-            bindService(intent, connection, BIND_AUTO_CREATE)
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
@@ -69,42 +69,53 @@ class MainActivity : ComponentActivity() {
                 Color.TRANSPARENT
             )
         )
-        handleStopWatchNotificationIntent(intent = intent)
+//        handleStopWatchNotificationIntent(intent = intent)
         setContent {
-            FansonicTheme{
-                if(isBound){
-                    StopWatchScreen(stopWatchService)
-                }
+            FansonicTheme {
+                SnakeGameScreen()
+//                if (isBound) {
+//                    StopWatchScreen(stopWatchService)
+//                }
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),0)
-            }
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 0)
+//            }
         }
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        handleStopWatchNotificationIntent(intent)
+//        handleStopWatchNotificationIntent(intent)
     }
-    override fun onStop() {
-        super.onStop()
-        unbindService(connection)
-        isBound = false
-    }
-    private fun handleStopWatchNotificationIntent(intent: Intent){
-        val state = intent.getStringExtra(STOPWATCH_STATE)
-        val action = intent.action
-        if(state != null && action != null){
-            if(this::stopWatchService.isInitialized && isBound){
-                when(action){
-                    ACTION_SERVICE_CANCEL -> stopWatchService.updateStateFromNotification(StopWatchState.CANCELLED.name)
-                    ACTION_SERVICE_START -> stopWatchService.updateStateFromNotification(StopWatchState.STARTED.name)
-                    ACTION_SERVICE_STOP -> stopWatchService.updateStateFromNotification(StopWatchState.STOPPED.name)
-                }
-            } else {
-                pendingState = state
-                pendingAction = action
-            }
-        }
-    }
+
+//    override fun onStop() {
+//        super.onStop()
+//        unbindService(connection)
+//        isBound = false
+//    }
+//
+//    private fun handleStopWatchNotificationIntent(intent: Intent) {
+//        val state = intent.getStringExtra(STOPWATCH_STATE)
+//        val action = intent.action
+//        if (state != null && action != null) {
+//            if (this::stopWatchService.isInitialized && isBound) {
+//                when (action) {
+//                    ACTION_SERVICE_CANCEL -> stopWatchService.updateStateFromNotification(
+//                        StopWatchState.CANCELLED.name
+//                    )
+//
+//                    ACTION_SERVICE_START -> stopWatchService.updateStateFromNotification(
+//                        StopWatchState.STARTED.name
+//                    )
+//
+//                    ACTION_SERVICE_STOP -> stopWatchService.updateStateFromNotification(
+//                        StopWatchState.STOPPED.name
+//                    )
+//                }
+//            } else {
+//                pendingState = state
+//                pendingAction = action
+//            }
+//        }
+//    }
 }
