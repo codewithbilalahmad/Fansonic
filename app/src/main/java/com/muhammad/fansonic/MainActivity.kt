@@ -22,6 +22,7 @@ import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_CA
 import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_START
 import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_STOP
 import com.muhammad.fansonic.foreground_service.util.Constants.STOPWATCH_STATE
+import com.muhammad.fansonic.html_text.HtmlTextScreen
 import com.muhammad.fansonic.snake_game.ui.SnakeGameScreen
 import com.muhammad.fansonic.ui.theme.FansonicTheme
 
@@ -72,7 +73,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                SnakeGameScreen()
+                HtmlTextScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
