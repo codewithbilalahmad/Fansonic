@@ -182,7 +182,7 @@ code {
 }
 
 @Composable
-fun HtmlText(html : String,modifier: Modifier = Modifier) {
+fun HtmlText(html : String,modifier: Modifier = Modifier)   {
     AndroidView(factory = {context ->
         WebView(context).apply {
             settings.apply {
