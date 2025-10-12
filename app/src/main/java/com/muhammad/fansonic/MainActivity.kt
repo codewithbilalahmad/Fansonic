@@ -18,8 +18,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.muhammad.fansonic.audioPlayer.AudioPlayerScreen
+import com.muhammad.fansonic.calendar_topbar.CalendarTopBarScreen
+import com.muhammad.fansonic.carousel.CarouselScreen
 import com.muhammad.fansonic.clock.ClockScreen
+import com.muhammad.fansonic.cornered_box.CorneredBoxScreen
 import com.muhammad.fansonic.counter.CounterScreen
+import com.muhammad.fansonic.depth_card.ColorScreen
+import com.muhammad.fansonic.depth_card.DepthCardScreen
 import com.muhammad.fansonic.foreground_service.service.StopWatchService
 import com.muhammad.fansonic.foreground_service.service.StopWatchState
 import com.muhammad.fansonic.foreground_service.ui.StopWatchScreen
@@ -27,10 +32,17 @@ import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_CA
 import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_START
 import com.muhammad.fansonic.foreground_service.util.Constants.ACTION_SERVICE_STOP
 import com.muhammad.fansonic.foreground_service.util.Constants.STOPWATCH_STATE
+import com.muhammad.fansonic.glass.GlassCardScreen
 import com.muhammad.fansonic.glitchEffect.GlitchEffectScreen
+import com.muhammad.fansonic.grid_background.GridBackgroundScreen
 import com.muhammad.fansonic.html_text.HtmlTextScreen
+import com.muhammad.fansonic.physicsButton.PhysicsButtonScreen
 import com.muhammad.fansonic.pulseAnimation.PulseAnimationScreen
+import com.muhammad.fansonic.raised_button.RaisedButtonScreen
+import com.muhammad.fansonic.rating.RatingStarsScreen
 import com.muhammad.fansonic.snake_game.ui.SnakeGameScreen
+import com.muhammad.fansonic.stackable_item.StackableItemScreen
+import com.muhammad.fansonic.step_progress.ProgressScreen
 import com.muhammad.fansonic.typing.TypingTextScreen
 import com.muhammad.fansonic.ui.theme.FansonicTheme
 
@@ -81,7 +93,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                AudioPlayerScreen()
+                CorneredBoxScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
