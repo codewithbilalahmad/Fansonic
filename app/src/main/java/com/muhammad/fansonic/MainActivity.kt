@@ -45,6 +45,7 @@ import com.muhammad.fansonic.stackable_item.StackableItemScreen
 import com.muhammad.fansonic.step_progress.ProgressScreen
 import com.muhammad.fansonic.typing.TypingTextScreen
 import com.muhammad.fansonic.ui.theme.FansonicTheme
+import com.muhammad.fansonic.week_calendar.WeekPagerCalendarScreen
 
 class MainActivity : ComponentActivity() {
 //    private var isBound by mutableStateOf(false)
@@ -93,7 +94,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                CorneredBoxScreen()
+                WeekPagerCalendarScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }

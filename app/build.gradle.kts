@@ -64,4 +64,5 @@ dependencies {
     "baselineProfile"(project(":app:baselineprofile"))
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
 }
