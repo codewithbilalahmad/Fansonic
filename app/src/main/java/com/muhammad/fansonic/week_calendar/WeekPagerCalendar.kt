@@ -53,13 +53,13 @@ import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
 @Composable
-fun WeekPagerCalendarScreen() {
+fun WeekCalendarScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp), contentAlignment = Alignment.Center
     ) {
-        WeekPagerCalendar()
+        WeekCalendar()
     }
 }
 
@@ -68,7 +68,7 @@ fun WeekPagerCalendarScreen() {
     ExperimentalMaterial3ExpressiveApi::class
 )
 @Composable
-fun WeekPagerCalendar(
+fun WeekCalendar(
     modifier: Modifier = Modifier,
     weekRange: IntRange = -100..100,
     initialDate: LocalDate = Clock.System.now()
