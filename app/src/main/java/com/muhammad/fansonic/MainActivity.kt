@@ -36,6 +36,7 @@ import com.muhammad.fansonic.glass.GlassCardScreen
 import com.muhammad.fansonic.glitchEffect.GlitchEffectScreen
 import com.muhammad.fansonic.grid_background.GridBackgroundScreen
 import com.muhammad.fansonic.html_text.HtmlTextScreen
+import com.muhammad.fansonic.month_calendar.MonthCalendarScreen
 import com.muhammad.fansonic.physicsButton.PhysicsButtonScreen
 import com.muhammad.fansonic.pulseAnimation.PulseAnimationScreen
 import com.muhammad.fansonic.raised_button.RaisedButtonScreen
@@ -94,7 +95,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                WeekCalendarScreen()
+                MonthCalendarScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
