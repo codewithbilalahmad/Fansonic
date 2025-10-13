@@ -158,7 +158,7 @@ fun MonthCalendar(
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         week.forEach { day ->
                             val isSelected = selectedDate == day
