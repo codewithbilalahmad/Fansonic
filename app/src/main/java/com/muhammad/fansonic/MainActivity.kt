@@ -25,6 +25,7 @@ import com.muhammad.fansonic.cornered_box.CorneredBoxScreen
 import com.muhammad.fansonic.counter.CounterScreen
 import com.muhammad.fansonic.depth_card.ColorScreen
 import com.muhammad.fansonic.depth_card.DepthCardScreen
+import com.muhammad.fansonic.explodable_chips.ExplodableClipScreen
 import com.muhammad.fansonic.foreground_service.service.StopWatchService
 import com.muhammad.fansonic.foreground_service.service.StopWatchState
 import com.muhammad.fansonic.foreground_service.ui.StopWatchScreen
@@ -95,7 +96,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                MonthCalendarScreen()
+                ExplodableClipScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
