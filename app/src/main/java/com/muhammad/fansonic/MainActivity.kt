@@ -26,6 +26,7 @@ import com.muhammad.fansonic.counter.CounterScreen
 import com.muhammad.fansonic.depth_card.ColorScreen
 import com.muhammad.fansonic.depth_card.DepthCardScreen
 import com.muhammad.fansonic.explodable_chips.ExplodableClipScreen
+import com.muhammad.fansonic.folder_picker.FolderPickerScreen
 import com.muhammad.fansonic.foreground_service.service.StopWatchService
 import com.muhammad.fansonic.foreground_service.service.StopWatchState
 import com.muhammad.fansonic.foreground_service.ui.StopWatchScreen
@@ -42,6 +43,8 @@ import com.muhammad.fansonic.physicsButton.PhysicsButtonScreen
 import com.muhammad.fansonic.pulseAnimation.PulseAnimationScreen
 import com.muhammad.fansonic.raised_button.RaisedButtonScreen
 import com.muhammad.fansonic.rating.RatingStarsScreen
+import com.muhammad.fansonic.shadows.ShadowsScreen
+import com.muhammad.fansonic.shared_element.SharedElementScreen
 import com.muhammad.fansonic.snake_game.ui.SnakeGameScreen
 import com.muhammad.fansonic.stackable_item.StackableItemScreen
 import com.muhammad.fansonic.step_progress.ProgressScreen
@@ -96,7 +99,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                ExplodableClipScreen()
+                FolderPickerScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
