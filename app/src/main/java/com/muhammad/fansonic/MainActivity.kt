@@ -37,6 +37,7 @@ import com.muhammad.fansonic.foreground_service.util.Constants.STOPWATCH_STATE
 import com.muhammad.fansonic.glass.GlassCardScreen
 import com.muhammad.fansonic.glitchEffect.GlitchEffectScreen
 import com.muhammad.fansonic.grid_background.GridBackgroundScreen
+import com.muhammad.fansonic.heightPicker.HeightPickerScreen
 import com.muhammad.fansonic.html_text.HtmlTextScreen
 import com.muhammad.fansonic.month_calendar.MonthCalendarScreen
 import com.muhammad.fansonic.physicsButton.PhysicsButtonScreen
@@ -99,7 +100,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                FolderPickerScreen()
+                HeightPickerScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
