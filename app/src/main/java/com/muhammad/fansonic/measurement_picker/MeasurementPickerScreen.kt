@@ -1,9 +1,8 @@
-package com.muhammad.fansonic.heightPicker
+package com.muhammad.fansonic.measurement_picker
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues

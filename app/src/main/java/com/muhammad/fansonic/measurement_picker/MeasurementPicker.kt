@@ -1,4 +1,4 @@
-package com.muhammad.fansonic.heightPicker
+package com.muhammad.fansonic.measurement_picker
 
 import android.graphics.Paint
 import android.graphics.Typeface
@@ -32,7 +32,6 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
