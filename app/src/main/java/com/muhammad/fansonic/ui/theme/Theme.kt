@@ -97,8 +97,8 @@ fun FansonicTheme(
     val view = LocalView.current
     val window = (context as Activity).window
     SideEffect {
-        WindowCompat.getInsetsController(window,view).isAppearanceLightStatusBars = !darkTheme
-        WindowCompat.getInsetsController(window,view).isAppearanceLightNavigationBars = !darkTheme
+        WindowCompat.getInsetsController(window,view).isAppearanceLightStatusBars = false
+        WindowCompat.getInsetsController(window,view).isAppearanceLightNavigationBars =false
     }
     val colorScheme = if(darkTheme) darkColorScheme else lightColorScheme
     MaterialExpressiveTheme(
