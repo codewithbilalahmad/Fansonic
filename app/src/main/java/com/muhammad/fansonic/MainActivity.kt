@@ -7,9 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.muhammad.fansonic.christmas_paywall.ChristmasPaywallScreen
-import com.muhammad.fansonic.drawing.DrawingScreen
-import com.muhammad.fansonic.measurement_picker.HeightPickerScreen
+import com.muhammad.fansonic.scroller.CustomVerticalZoomScrollerScreen
+import com.muhammad.fansonic.shadows.ShadowsScreen
+import com.muhammad.fansonic.template.DrawingFrameScreen
 import com.muhammad.fansonic.ui.theme.FansonicTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme {
-                ChristmasPaywallScreen()
+                DrawingFrameScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }

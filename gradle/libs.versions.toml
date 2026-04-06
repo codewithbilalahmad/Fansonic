@@ -1,24 +1,25 @@
 [versions]
-agp = "8.13.0"
+agp = "8.13.2"
 coilCompose = "2.7.0"
 foundation = "1.10.0"
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 kotlinxDatetime = "0.7.1"
 lifecycleRuntimeKtx = "2.10.0"
-activityCompose = "1.12.2"
-composeBom = "2025.12.01"
-material3= "1.5.0-alpha11"
+activityCompose = "1.12.4"
+composeBom = "2026.02.00"
+material3= "1.5.0-alpha14"
+segmentationSelfie = "16.0.0-beta6"
 uiautomator = "2.3.0"
 benchmarkMacroJunit4 = "1.4.1"
 baselineprofile = "1.4.1"
 profileinstaller = "1.4.1"
-koin = "4.1.1"
+koin = "4.2.0"
 animation = "1.10.0"
-navigationCompose = "2.9.6"
+navigationCompose = "2.9.7"
 
 [libraries]
 navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
@@ -44,6 +45,7 @@ androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomato
 androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
 androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+segmentation-selfie = { module = "com.google.mlkit:segmentation-selfie", version.ref = "segmentationSelfie" }
 
 
 [plugins]

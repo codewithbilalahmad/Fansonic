@@ -2,6 +2,18 @@ package com.muhammad.fansonic.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val gradientColors = listOf(
+    Color.Red,
+    Color.Magenta,
+    Color.Blue,
+    Color.Cyan,
+    Color.Green,
+    Color.Yellow,
+    Color.Red
+)
+
+val backgroundColor = Color(0xffECEFF1)
+
 val primaryLight = Color(0xFF578CFF)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFF6055D8)

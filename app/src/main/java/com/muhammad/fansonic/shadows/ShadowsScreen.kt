@@ -79,7 +79,6 @@ fun ShadowsScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(TechBlack)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center

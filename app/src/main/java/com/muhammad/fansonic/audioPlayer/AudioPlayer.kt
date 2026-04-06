@@ -34,8 +34,6 @@ import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
-
-
 @Composable
 fun AudioPlayerScreen() {
     val context = LocalContext.current

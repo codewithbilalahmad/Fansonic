@@ -95,8 +95,7 @@ fun Speedometer(
                 )
                 val textWidth = textMarker.size.width
                 val textHeight = textMarker.size.height
-                val textOffset =
-                    calculateOffset(angleInRed, circleRadius - arcStrokeWith - 50f, center)
+                val textOffset = calculateOffset(angleInRed, circleRadius - arcStrokeWith - 50f, center)
                 drawText(
                     textMarker,
                     color = Color.Black,
