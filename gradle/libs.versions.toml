@@ -20,8 +20,10 @@ profileinstaller = "1.4.1"
 koin = "4.2.0"
 animation = "1.10.0"
 navigationCompose = "2.9.7"
+playServicesAds = "25.0.0"
 
 [libraries]
+play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
 navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }

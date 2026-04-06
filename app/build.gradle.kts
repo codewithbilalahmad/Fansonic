@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.play.services.ads)
     implementation(libs.segmentation.selfie)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

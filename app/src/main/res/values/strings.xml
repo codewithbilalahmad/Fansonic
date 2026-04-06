@@ -10,4 +10,5 @@
     <string name="height">Height</string>
     <string name="height_description">Please select a measurement of your height</string>
     <string name="cm">cm</string>
+    <string name="ad_label">AD</string>
 </resources>
