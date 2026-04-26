@@ -7,6 +7,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.muhammad.fansonic.awesome.AwesomeScreen
+import com.muhammad.fansonic.great.NeuMorphicUPScreen
+import com.muhammad.fansonic.movie_app.MovieAppScreen
+import com.muhammad.fansonic.neumorphic.NeumorphicSwitchScreen
+import com.muhammad.fansonic.payment.PaymentScreen
 import com.muhammad.fansonic.scroller.CustomVerticalZoomScrollerScreen
 import com.muhammad.fansonic.shadows.ShadowsScreen
 import com.muhammad.fansonic.template.DrawingFrameScreen
@@ -58,8 +63,8 @@ class MainActivity : ComponentActivity() {
         )
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
-            FansonicTheme {
-                DrawingFrameScreen()
+            FansonicTheme(darkTheme = true){
+                PaymentScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
