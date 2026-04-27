@@ -233,13 +233,12 @@ fun InstagramStoryScreen(viewModel: InstagramStoryViewModel = koinViewModel()) {
                             )
                             Spacer(Modifier.width(12.dp))
                             Column(
-                                modifier = Modifier.weight(1f),
-                                verticalArrangement = Arrangement.spacedBy(2.dp)
+                                modifier = Modifier.weight(1f)
                             ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Text(
                                         text = story.username,
-                                        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
+                                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold)
                                     )
                                     Spacer(Modifier.width(2.dp))
                                     Icon(

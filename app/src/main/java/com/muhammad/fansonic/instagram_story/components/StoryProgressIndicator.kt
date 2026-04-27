@@ -79,7 +79,7 @@ fun StoryProgressIndicator(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
-                    .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
+                    .background(MaterialTheme.colorScheme.onBackground.copy(0.5f), CircleShape)
             ) {
                 Box(
                     modifier = Modifier

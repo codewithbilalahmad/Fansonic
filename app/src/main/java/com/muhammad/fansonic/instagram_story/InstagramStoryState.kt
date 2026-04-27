@@ -11,7 +11,7 @@ data class InstagramStoryState(
             duration = "5h",
             emojis = listOf("💻", "🔥", "🚀", "✨", "😎", "🎯"),
             desp = "Midnight coding session 🎉✨",
-            media = listOf(R.drawable.story_1, R.drawable.story_2, R.drawable.story_3)
+            media = listOf(R.drawable.story_3, R.drawable.story_1, R.drawable.story_2)
         ),
         Story(
             username = "mr.ali.khan",
