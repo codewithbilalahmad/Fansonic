@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.muhammad.fansonic.awesome.AwesomeScreen
 import com.muhammad.fansonic.great.NeuMorphicUPScreen
+import com.muhammad.fansonic.instagram_story.InstagramStoryScreen
 import com.muhammad.fansonic.movie_app.MovieAppScreen
 import com.muhammad.fansonic.neumorphic.NeumorphicSwitchScreen
 import com.muhammad.fansonic.payment.PaymentScreen
@@ -64,7 +65,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme(darkTheme = true){
-                PaymentScreen()
+                InstagramStoryScreen()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
