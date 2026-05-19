@@ -8,6 +8,7 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.muhammad.fansonic.awesome.AwesomeScreen
+import com.muhammad.fansonic.collapsing_topbar.CollapsingAppBar
 import com.muhammad.fansonic.great.NeuMorphicUPScreen
 import com.muhammad.fansonic.instagram_story.InstagramStoryScreen
 import com.muhammad.fansonic.movie_app.MovieAppScreen
@@ -64,8 +65,8 @@ class MainActivity : ComponentActivity() {
         )
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
-            FansonicTheme(darkTheme = true){
-                InstagramStoryScreen()
+            FansonicTheme(){
+                CollapsingAppBar()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
