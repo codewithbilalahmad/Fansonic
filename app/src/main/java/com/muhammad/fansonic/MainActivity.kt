@@ -8,9 +8,13 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.muhammad.fansonic.awesome.AwesomeScreen
+import com.muhammad.fansonic.charts.LineChartScreen
+import com.muhammad.fansonic.charts.NutritionLineChartScreen
 import com.muhammad.fansonic.collapsing_topbar.CollapsingAppBar
 import com.muhammad.fansonic.great.NeuMorphicUPScreen
 import com.muhammad.fansonic.instagram_story.InstagramStoryScreen
+import com.muhammad.fansonic.like_animation.YoutubeLikeAnimationScreen
+import com.muhammad.fansonic.milky_way.MilkyWayCanvas
 import com.muhammad.fansonic.movie_app.MovieAppScreen
 import com.muhammad.fansonic.neumorphic.NeumorphicSwitchScreen
 import com.muhammad.fansonic.payment.PaymentScreen
@@ -66,7 +70,7 @@ class MainActivity : ComponentActivity() {
 //        handleStopWatchNotificationIntent(intent = intent)
         setContent {
             FansonicTheme(){
-                CollapsingAppBar()
+                MilkyWayCanvas()
 //                if (isBound) {
 //                    StopWatchScreen(stopWatchService)
 //                }
